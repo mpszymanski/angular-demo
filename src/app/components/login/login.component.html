@@ -1,0 +1,34 @@
+<div class="columns">
+  <div class="column is-3">
+    <h2 class="is-size-3">
+      Login
+    </h2>
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-3">
+    <p *ngIf="hasError" class="error">
+      Wring username or password
+    </p>
+  </div>
+</div>
+<form (ngSubmit)="attemptLogin()" #loginForm="ngForm">
+  <div class="columns">
+    <div class="column is-3">
+      <label>Username</label>
+      <input type="text" name="username" class="input" placeholder="Mynickname" [(ngModel)]="credentials.username" required>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-3">
+      <label>Password</label>
+      <input type="password" name="password" class="input" placeholder="*****" [(ngModel)]="credentials.password" required>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-3 has-text-right">
+      <button type="submit" class="button is-primary"
+      [disabled]="!loginForm.form.valid">Sing in</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,42 @@
+<div class="columns">
+  <h2 class="is-size-3">
+    Your list
+  </h2>
+</div>
+<div class="columns">
+  <div class="is-5" *ngIf="totalCount()">
+    <h4 class="is-size-6">
+      {{ complitedCount() }} of {{ totalCount() }} complited
+    </h4>
+    <table class="table">
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Number</th>
+        <th>Total Price</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td>
+          <label class="checkbox">
+            <input type="checkbox" min="1" [(ngModel)]="item.status" (change)="onListChange()">
+          </label>
+        </td>
+        <td>{{ item.product.name }}</td>
+        <td>$ {{ item.product.price | price }}</td>
+        <td>
+          <input type="number" class="input input-price" min="1" [(ngModel)]="item.number" (change)="onListChange()">
+        </td>
+        <td>$ {{ item.product.price * item.number | price }}</td>
+        <td>
+          <button type="button" class="button" (click)="removeItem(item.product)">Remove</button>
+        </td>
+      </tr>
+    </table>
+    <h4 class="is-size-5 has-text-right">You will pay: $ {{ totalPriceSum() | price }}</h4>
+  </div>
+</div>
+<div *ngIf="totalCount() == 0">
+Your list is empty. Check out <a routerLink="/products">Products</a>.
+</div>

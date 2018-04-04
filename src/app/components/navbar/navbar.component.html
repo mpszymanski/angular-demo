@@ -1,0 +1,15 @@
+<nav class="navbar" role="navigation" aria-label="main navigation" *ngIf="isLoggedIn$ | async">
+  <div class="navbar-start">
+    <a [routerLinkActive]="['is-active']" routerLink="/list" class="navbar-item">
+      List
+    </a>
+    <a [routerLinkActive]="['is-active']" routerLink="/products" class="navbar-item">
+      Products
+    </a>
+  </div>
+  <div class="navbar-end" (click)="logout()">
+    <a class="navbar-item">
+      Logout
+    </a>
+  </div>
+</nav>
